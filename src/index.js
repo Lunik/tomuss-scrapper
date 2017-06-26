@@ -10,13 +10,10 @@ const MY_ID = process.env.MY_ID
 const MY_PRIVATE_KEY = process.env.MY_PRIVATE_KEY
 
 if (MY_ID && MY_PRIVATE_KEY) {
-  const enableSMS = true
   sms.account(
     MY_ID,
     MY_PRIVATE_KEY
   )
-} else {
-  const enableSMS = false
 }
 
 function checkArgument () {
@@ -75,7 +72,7 @@ function findNewEntry (rss, cb) {
 
 function onNewEntry (item) {
   console.log(item)
-  if(enableSMS){
+  if(MY_ID && MY_PRIVATE_KEY){
     delete item.link
     delete item.guid
     delete item.author

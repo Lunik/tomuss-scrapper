@@ -19,10 +19,7 @@ var MY_ID = process.env.MY_ID; /**
 var MY_PRIVATE_KEY = process.env.MY_PRIVATE_KEY;
 
 if (MY_ID && MY_PRIVATE_KEY) {
-  var _enableSMS = true;
   _freeMobileSmsApi2.default.account(MY_ID, MY_PRIVATE_KEY);
-} else {
-  var _enableSMS2 = false;
 }
 
 function checkArgument() {
@@ -81,7 +78,7 @@ function findNewEntry(rss, cb) {
 
 function onNewEntry(item) {
   console.log(item);
-  if (enableSMS) {
+  if (MY_ID && MY_PRIVATE_KEY) {
     delete item.link;
     delete item.guid;
     delete item.author;
